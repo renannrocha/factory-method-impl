@@ -21,13 +21,13 @@ Imagine que você tenha uma classe que cria diferentes tipos de objetos, mas voc
 Com o Factory Method, você pode deixar a lógica de criação de objetos para as subclasses, fazendo a classe principal seguir o princípio de aberto/fechado.
 
 ### Estrutura do Padrão Factory Method
-**Creator (Criador)**: Classe abstrata ou interface que declara o método de fábrica (`factoryMethod()`). O objetivo dessa classe é definir o método que será usado para criar objetos, sem especificar exatamente que classe será instanciada.
+- **Creator (Criador)**: Classe abstrata ou interface que declara o método de fábrica (`factoryMethod()`). O objetivo dessa classe é definir o método que será usado para criar objetos, sem especificar exatamente que classe será instanciada.
 
-**ConcreteCreator (Criador Concreto)**: Subclasse que implementa o `factoryMethod()` e define qual tipo de objeto concreto será criado.
+- **ConcreteCreator (Criador Concreto)**: Subclasse que implementa o `factoryMethod()` e define qual tipo de objeto concreto será criado.
 
-**Product (Produto)**: Interface ou classe abstrata que define o comportamento do objeto que será criado.
+- **Product (Produto)**: Interface ou classe abstrata que define o comportamento do objeto que será criado.
 
-**ConcreteProduct (Produto Concreto)**: Implementação específica do produto que será criado pelas subclasses concretas do `Creator`.
+- **ConcreteProduct (Produto Concreto)**: Implementação específica do produto que será criado pelas subclasses concretas do `Creator`.
 
 Na imagem a seguir, você pode observar que a estrutura geral da solução proposta pelo padrão Factory Method define quatro participantes:
 
@@ -49,6 +49,53 @@ Além disso, esse padrão possibilita a conexão de duas hierarquias paralelas r
 
 Portanto, esse padrão pode ser aplicado em conjunto com o padrão Strategy, que tem como objetivo a separação de diferentes algoritmos dos objetos de domínio sobre os quais eles atuam.
 
+### Situações Reais onde o Factory Method Pode Ser Usado
+Esse padrão é ideal em sistemas onde:
+
+- Você tem múltiplas variantes de um objeto, como diferentes tipos de notificações, relatórios, ou formas de pagamento.
+- As classes que criam os objetos podem variar com o tempo, e você quer evitar o uso explícito de new no código principal para garantir flexibilidade.
+- Você precisa isolar a lógica de criação dos objetos para seguir os princípios do SOLID, especialmente o Princípio de Responsabilidade Única (SRP) e o Princípio Aberto/Fechado (OCP).
+
 <hr>
 
+## Sobre o projeto
 
+### Requisitos
+- [Java 17](https://www.oracle.com/java/technologies/downloads/#java17)
+- [Maven](https://maven.apache.org/)
+
+### Instalação e Build
+1. realize Clone do repositorio
+    ``` shell
+    git clone https://github.com/renannrocha/factory-method-impl.git
+    ```
+2. Navegue ate a pasta do projeto:
+    ``` shell
+    cd factory-method-impl
+    ```
+3. realize o Build do projeto com o Maven
+    ``` shell
+    mvn clean install
+    ```
+### Iniciar o Servidor
+
+para excutar o servidor, execute:
+``` shell
+mvn spring-boot:run
+```
+or
+``` shell
+java -jar target/factoryMethod-1.0.jar
+```
+> [!IMPORTANT]
+> O servidor ira iniciar em `http://localhost:8080` por padrão.
+
+### Endpoints Disponíveis
+
+| Type | Endpoint              | 
+|------|-----------------------|
+| GET  | `/document/{docType}` |
+
+### Contato
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato.
+- Email: [renanrocha8897@gmail.com](mailto:renanrocha8897@gmail.com)
